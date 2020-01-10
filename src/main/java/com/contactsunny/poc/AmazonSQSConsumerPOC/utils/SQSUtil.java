@@ -49,11 +49,11 @@ public class SQSUtil {
 
     public void startListeningToMessages() {
 
-        while (true) {
+        final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(sqsUrl)
+                .withMaxNumberOfMessages(1)
+                .withWaitTimeSeconds(3);
 
-            final ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(sqsUrl)
-                            .withMaxNumberOfMessages(1)
-                            .withWaitTimeSeconds(3);
+        while (true) {
 
             final List<Message> messages = amazonSQS.receiveMessage(receiveMessageRequest).getMessages();
 

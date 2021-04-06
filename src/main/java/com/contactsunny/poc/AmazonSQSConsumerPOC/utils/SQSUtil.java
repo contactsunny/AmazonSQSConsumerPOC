@@ -44,7 +44,7 @@ public class SQSUtil {
                 new BasicAWSCredentials(awsAccessKey, awsSecretKey)
         );
 
-        this.amazonSQS = AmazonSQSClientBuilder.standard().withCredentials(awsCredentialsProvider).build();
+        this.amazonSQS = AmazonSQSClientBuilder.standard().withCredentials(awsCredentialsProvider).withRegion(awsRegion).build();
     }
 
     public void startListeningToMessages() {
